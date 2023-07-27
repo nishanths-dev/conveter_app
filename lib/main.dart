@@ -19,26 +19,38 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(' Enter the value '),
+        title: Text(' Converter App '),
       ),
       body: Column(
         children: [
           TextField(
               controller: nishanth,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(border: OutlineInputBorder())),
+              decoration: const InputDecoration(
+                  hintText: 'enter the kilogram',
+                  border: OutlineInputBorder())),
           ElevatedButton(
               onPressed: () {
                 setState(() {
                   result = int.parse(nishanth.text) * 1000;
                 });
               },
-              child: Text('convert to grams')),
-          Text(result.toString()),
-          Text('grams') 
+              child: const Text('convert to grams')),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                result.toString(),
+                style: const TextStyle(fontSize: 50),
+              ),
+              const Text(
+                'grams',
+                style: TextStyle(fontStyle: FontStyle.italic),
+              ),
+            ],
+          )
         ],
       ),
     );
   }
 }
-
